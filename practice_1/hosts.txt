@@ -1,0 +1,4 @@
+127.0.0.1 localhost
+8.8.8.8 google.com
+182.168.1.1 home
+999.999.9.9 wtf
