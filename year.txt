@@ -1,8 +1,0 @@
-# -*- coding: cp1251 -*-
-year = raw_input("Enter year ")
-year = int(year)
-
-if (not year % 4 and year % 100) or not year % 400:
-    print('Leap year')
-else:
-    print('Common year')
