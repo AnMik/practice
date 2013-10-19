@@ -1,18 +1,26 @@
 import time
 from genericpath import isfile
 import os
+from django.shortcuts import render
 from lab3.settings import TEMPLATE_DIRS
 from django.http import HttpResponse
 
 
 def get_content(request):
-    html = "<html><body>"
     try:
-        html += "<b>Files in catalogue is</b> %s" % files_in_catalogue(request)
+        rows = get_rows(request)
     except FileNotFoundError:
-        html += "no such directory"
-    html += "</body></html>"
-    return HttpResponse(html)
+        return HttpResponse("No such directory")
+    return render(request, "listing.html", {'rows': rows})
+
+
+def get_rows(request):
+    files_list = []
+    current_dir = get_directory(request)
+    os.chdir(current_dir)
+    for file in os.listdir("."):
+        files_list.append(get_file_info(current_dir, file, request))
+    return files_list
 
 
 def get_directory(request):
@@ -22,7 +30,7 @@ def get_directory(request):
 def folder_to_url(file, req):
     html_str = file
     if not isfile(file):
-        html_str = "<a href=" + req.get_full_path() + "/" + file + ">" + file + "</a>"
+        html_str = "<a href=\"" + req.get_full_path() + "/" + file + "\">" + file + "</a>"
     return html_str
 
 
@@ -41,22 +49,4 @@ def get_file_info(current_dir, file, request):
         folder_to_url(file, request),
         get_size(current_dir, file),
         get_mtime(current_dir, file)]
-    table_row = add_td(attribs)
-    return table_row
-
-
-def add_td(cells):
-    newcells = ""
-    for cell in cells:
-        newcells += "<td>" + cell + "</td>"
-    return newcells
-
-
-def files_in_catalogue(request):
-    files_list = "<table border=1>"
-    current_dir = get_directory(request)
-    os.chdir(current_dir)
-    for file in os.listdir("."):
-        files_list += "<tr>" + get_file_info(current_dir, file, request) + "</tr>"
-    files_list += "</table>"
-    return files_list
+    return attribs

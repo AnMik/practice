@@ -1,0 +1,19 @@
+<html>
+<head>
+Listing
+</head>
+<body>
+<h2> Folder content </h2>
+<table border="1">
+    {% for row in rows %}
+        <tr>
+            {% for cell in row %}
+            <td>
+                {% autoescape off %} {{ cell }} {% endautoescape %}
+            </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
