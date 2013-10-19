@@ -1,5 +1,5 @@
 from django.conf.urls import patterns
-from lab3_2.views import get_content
+from lab3_3.views import get_content
 #from django.contrib import admin
 #admin.autodiscover()
 
