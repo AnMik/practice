@@ -1,0 +1,8 @@
+.idea
+__pycache__
+data
+lib.json
+wsgi.py
+__init__.py
+settings.py
+manage.py
