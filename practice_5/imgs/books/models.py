@@ -35,12 +35,7 @@ class Book(Model):
         return self.id
 
     def __unicode__(self):
-        authors = ["<a href=authors/" + str(a.id) + ">" +
-                   a.__unicode__() +
-                   "</a>" for a in self.authors.all()]
-        publishers = self.publishers.__unicode__()
-        return '\"%s\" %s, \n%s,  \n%s' % \
-               (self.title, self.publication_date, authors, publishers)
+        return '\"%s\" %s' % (self.title, self.publication_date)
 
     def book_authors(self):
         return ', '.join([author.first_name for author in self.authors.all()])
