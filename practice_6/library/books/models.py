@@ -8,9 +8,17 @@ class Authors(Model):
     first_name = CharField(max_length=32)
     last_name = CharField(max_length=32)
     email = EmailField(null=True, blank=True)
+    birthyear = SmallIntegerField(null=True, blank=True)
+
+    def year(self):
+        year = self.birthyear
+        if not year:
+            year = "возраст неизвестен"
+        print(year)
+        return year
 
     def __unicode__(self):
-        return '\"%s %s\"' % (self.first_name, self.last_name)
+        return '\"%s %s\", %s' % (self.first_name, self.last_name, self.year())
 
 
 class Publisher(Model):
@@ -21,7 +29,7 @@ class Publisher(Model):
     website = URLField()
 
     def __unicode__(self):
-            return '%s (%s, %s)' % (self.title, self.city, self.country)
+        return '%s (%s, %s)' % (self.title, self.city, self.country)
 
 
 class Book(Model):

@@ -11,7 +11,7 @@ class BooksImage(Model):
                             blank=True)
     book_id = ForeignKey(Book, blank=True, null=True)
 
-    def images_count_simple(self):
+    def images_count(self):
         count = 0
         if self.image_thumbnail:
             count += 1
@@ -28,5 +28,5 @@ class BooksImage(Model):
 
 
 class BooksImageAdmin(admin.ModelAdmin):
-        list_display = ["id", "image_preview", "images_count_simple"]
+        list_display = ["id", "image_preview", "images_count"]
         ordering = ("id",)
