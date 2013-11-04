@@ -2,9 +2,10 @@ from django.contrib import admin
 from django.db.models import *
 from library.settings import MEDIA_ROOT
 from books.models import Book
+from utils.models import TimeStampedModel
 
 
-class BooksImage(Model):
+class BooksImage(TimeStampedModel):
     image_thumbnail = ImageField(upload_to="bookimgs/images/thumbnails/")
     image_full = ImageField(upload_to="bookimgs/images/fulls/",
                             null=True,
@@ -28,5 +29,9 @@ class BooksImage(Model):
 
 
 class BooksImageAdmin(admin.ModelAdmin):
-        list_display = ["id", "image_preview", "images_count"]
+        list_display = ["id",
+                        "image_preview",
+                        "images_count",
+                        "created",
+                        "updated"]
         ordering = ("id",)

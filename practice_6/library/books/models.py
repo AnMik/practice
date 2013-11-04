@@ -2,9 +2,10 @@ from django.contrib.admin import ModelAdmin
 from django.contrib import admin
 from django.db.models import *
 from django.utils.timezone import now
+from utils.models import TimeStampedModel
 
 
-class Authors(Model):
+class Authors(TimeStampedModel):
     first_name = CharField(max_length=32)
     last_name = CharField(max_length=32)
     email = EmailField(null=True, blank=True)
@@ -21,7 +22,7 @@ class Authors(Model):
         return '\"%s %s\", %s' % (self.first_name, self.last_name, self.year())
 
 
-class Publisher(Model):
+class Publisher(TimeStampedModel):
     title = CharField(max_length=32)
     address = TextField()
     city = CharField(max_length=64)
@@ -32,7 +33,7 @@ class Publisher(Model):
         return '%s (%s, %s)' % (self.title, self.city, self.country)
 
 
-class Book(Model):
+class Book(TimeStampedModel):
     title = CharField(max_length=128)
     publication_date = DateTimeField(now)
     authors = ManyToManyField(Authors)
