@@ -37,6 +37,7 @@ class Book(Model):
     publication_date = DateTimeField(now)
     authors = ManyToManyField(Authors)
     publishers = ForeignKey(Publisher)
+    description = TextField()
 
     def get_absolute_url(self):
         return self.id
