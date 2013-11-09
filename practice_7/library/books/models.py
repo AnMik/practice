@@ -2,6 +2,7 @@ from django.contrib.admin import ModelAdmin
 from django.contrib import admin
 from django.db.models import *
 from django.utils.timezone import now
+from django.views.generic import ListView, DetailView
 from utils.models import TimeStampedModel
 
 
@@ -77,3 +78,24 @@ class BookAdmin(ModelAdmin):
     list_display_links = ("title",)
     ordering = ("id",)
     inlines = [BooksInline, ]
+
+
+class BooksList(ListView):
+    model = Book
+    paginate_by = 2
+    template_name = 'books_list.html'
+
+
+class BooksDetail(DetailView):
+    model = Book
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        if pk is not None:
+            queryset = queryset.filter(pk=pk)
+        obj = queryset.get()
+
+        return obj

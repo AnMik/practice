@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="book">
+<table border=1>
+	<tr>
+	Books data
+	</tr>
+
+	<tr>
+		<td> Title	</td>
+		<td> Authors </td>
+		<td> Publishers </td>
+		<td> Date Of Publication </td>
+	</tr>
+
+	<tr>
+		<td> {{ object.title }} </td>
+		<td> {{ object.book_authors }} </td>
+		<td> {{ object.publishers }} </td>
+		<td> {{ object.publication_date|date:"d.m.Y в H:i" }} </td>
+	</tr>
+</table>
+
+{% endblock %}

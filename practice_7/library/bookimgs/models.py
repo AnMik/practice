@@ -1,3 +1,4 @@
+from django.views.generic import ListView, DetailView
 from django.contrib import admin
 from django.db.models import *
 from django.shortcuts import render_to_response
@@ -38,3 +39,24 @@ class BooksImageAdmin(admin.ModelAdmin):
                         "created",
                         "updated"]
         ordering = ("id",)
+
+
+class BooksImageList(ListView):
+    model = BooksImage
+    paginate_by = 2
+    template_name = 'booksimage_list.html'
+
+
+class BooksImageDetail(DetailView):
+    model = BooksImage
+
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        if queryset is None:
+            queryset = self.get_queryset()
+
+        if pk is not None:
+            queryset = queryset.filter(pk=pk)
+        obj = queryset.get()
+
+        return obj

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bookimage">
+<table border=1>
+	<tr>
+	Covers data
+	</tr>
+
+	<tr>
+		<td> ID	</td>
+		<td> Thumbnail </td>
+		<td> Created </td>
+		<td> Updated </td>
+	</tr>
+
+	<tr>
+		<td> {{ object.id }} </td>
+		<td> <img src="{{ object.image_thumbnail }}"/> </td>
+		<td> {{ object.created|date:"d.m.Y в H:i" }} </td>
+		<td> {{ object.updated|date:"d.m.Y в H:i" }} </td>
+	</tr>
+</table>
+
+{% endblock %}

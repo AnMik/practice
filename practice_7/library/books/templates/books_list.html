@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for book in object_list %}
+        <div class="books">
+            <div class="id"><a href="/books/details/{{ book.id }}/">{{ book.title }}</a></div>
+        </div>
+    {% empty %}
+        <p>Объектов нет</p>
+    {% endfor %}
+
+    {% if paginator.num_pages > 1 %}
+        {% if page_obj.has_previous %}
+            <a href="/books/list/{{ page_obj.previous_page_number }}/">&larr;</a>
+        {% endif %}
+        <span class="current_page">{{ paginator.number }}</span>
+        {% if page_obj.has_next %}
+            <a href="/books/list/{{ page_obj.next_page_number }}">&rarr;</a>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}
