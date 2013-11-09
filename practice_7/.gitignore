@@ -1,0 +1,5 @@
+*.json
+settings.py
+data
+images
+migrations
