@@ -3,3 +3,4 @@ settings.py
 data
 images
 migrations
+base.html
