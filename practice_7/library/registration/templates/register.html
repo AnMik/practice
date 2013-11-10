@@ -4,7 +4,14 @@
 
 <h2>Register</h2>
 <form action="/accounts/register/" method="post">{% csrf_token %}
-{{form}}
+<table borer='1'>
+	{% for f in form %}
+		<tr>
+			<td>{{f.label}}:</td>
+			<td>{{f}}</td>
+		</tr>
+	{% endfor %}
+</table>
 <input type="submit" value="Register" />
 </form>  
 
