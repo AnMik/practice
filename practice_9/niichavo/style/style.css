@@ -1,0 +1,119 @@
+body {
+	background-image: url(../img/body.gif); 
+	background-repeat: repeat-x; 
+	background-color: #fcfafa; 
+	margin: 0px; 
+	padding: 0px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif ; 
+	font-size: 0.9em;
+}
+
+h1 { 
+	background-image: url(../img/head.gif); 
+	background-color: #666666; 
+	color: #ffffff; 
+	font-size: 1.2em; 
+	margin: 0px; 
+	padding: 10px; 
+	height: 100px; 
+	text-align: right; 
+}
+
+h1 img {
+	float:left;
+}
+
+h2 {
+	color: #333333; 
+	font-size:1.2em; 
+	margin: 10px; 
+	margin-top: 20px; 
+	padding: 0px 10px 2px; 
+	text-align: right;
+}
+
+h3 {
+	font-size: 0.9em; 
+	font-weight: bold; 
+	text-align: right; 
+	margin: 10px; 
+	padding: 0px 10px;
+}
+
+dl {
+	margin: 10px;
+}
+
+blockquote{
+	background-color: #ddd; 
+	border-style: solid; 
+	border-width: 1px; 
+	border-color:#333333;
+}
+
+dt{
+	margin-top: 10px; 
+	font-weight: bold;
+}
+
+dd{
+	padding: 0px 3px; 
+	margin-left: 10px; 
+	border-left: solid 3px #999999;
+}
+
+p {
+	margin: 10px;
+}
+	
+p img {
+	margin-right: 10px; 
+	float:left;
+}
+	
+p.topnav{
+	background-color: #666666; 
+	color:#ffffff; 
+	font-weight: bold; 
+	margin: 0px; 
+	padding: 0px 10px; 
+	height: 20px; 
+	text-align: right; 
+	border-bottom: solid 1px #333333; 
+}
+
+p.topnav a {
+	color: #ffffff; 
+	font-weight: normal;
+}
+
+p.bottomnav{
+	font-size: 0.6em; 
+	margin: 100px 0px 10px; 
+	padding: 3px 10px 0px; 
+	text-align: center; 
+	border-top: solid 1px #333333;
+}
+
+p.bottomnav a {
+	color: #333333;
+}
+
+p.copy{
+	font-size: 0.6em; 
+	text-align: right;
+}
+
+p.sign{
+	font-size: 0.6em; 
+	text-align: right; 
+	margin-bottom: 50px;
+}
+
+p.nav a:hover {
+	color: #000033;
+}
+
+p.bottomnav a:hover {
+	color: #666666;
+}
