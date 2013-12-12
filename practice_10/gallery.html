@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Галерея</title>
+
+    <script type="text/javascript">
+    var maxImageCount = 100;
+    var images=[];
+    for(var i=0; i < maxImageCount; i++) {
+      im = new Image();
+      im.onload=function(){
+        images.push(this);
+      }
+      im.src='images/' + i + '.jpg';
+    }
+    var current = 0;
+
+    window.onload = function(){
+        document.image.src = images[0].src; 
+    } 
+
+    function next() {
+        current = ++current % images.length;
+        document.image.src = images[current].src; 
+    }
+
+    function prev() {
+        current = --current < 0 ? images.length - 1 : current;
+        document.image.src = images[current].src; 
+    }
+
+    function changeNext(overed){
+        document.nextButton.src = overed ? src="images/next-over.gif" : src="images/next.gif"; 
+    }
+
+    function changePrev(overed){
+        document.prevButton.src = overed ? src="images/prev-over.gif" : src="images/prev.gif"; 
+    }
+
+    </script>
+
+  </head>
+  <body>
+    <h1>Галерея </h1>
+    <table>
+      <tr>
+        <th><button type="button" value="Previous" onclick="prev()" borderStyle="none">
+          <img src="images/prev.gif" name="prevButton" onMouseOver="changePrev(true)" onmouseout="changePrev(false)">
+        </button></th>
+        <th><button type="button" value="Next" onclick="next()" onMouseOver="changeNext(true)" onmouseout="changeNext(false)">
+          <img src="images/next.gif" name="nextButton">
+        </button></th>
+      </tr>
+      <tr>
+      <td colspan="2"><img src="" name="image"/></td>
+      </tr>
+    </table>
+  </body>
+
+</html>

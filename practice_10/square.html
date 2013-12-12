@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style type="text/css">
+  #square
+  {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50%;
+    top: 0px;
+    background-color: red;
+  }
+
+  </style>
+
+  <script type="text/javascript">
+
+	var position = 0;
+	var timeout_id = null;
+	function init()
+	{
+		document.getElementById("square").style.left = (screen.availWidth / 2) - d.width / 2 + "px";
+	}
+
+	function move(start)
+	{
+		if (start) {
+			position = 0;
+			clearTimeout(timeout_id);
+		}
+
+		position = position * 1.5 + 1;
+		timeout_id = setTimeout("move(false)", 50); 
+
+		if(position > (document.documentElement.clientHeight - 100))
+		{
+			clearTimeout(timeout_id);
+		}
+
+		document.getElementById("square").style.top = position + "px";
+	}
+</script>
+
+	</head>
+	<body onload="init()">
+		<div id="square" onclick="move(true);"></div>
+	</body>
+
+</html>
